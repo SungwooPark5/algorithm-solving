@@ -1,3 +1,7 @@
+# list.sort()의 시간 복잡도는 O(n log n)입니다.
+# sort() 메소드는 Timsort 알고리즘을 사용함
+
+
 def solution(arr):
     arr.sort()
     return arr
