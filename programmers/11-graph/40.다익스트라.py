@@ -6,7 +6,7 @@
 """
 
 import heapq
-from collections import defaultdict, deque
+from collections import defaultdict
 
 INF = 999999
 
@@ -34,9 +34,10 @@ def solution(start, numNodes, edges):
         visited[current_node] = True
 
         for neighbor, weight in graph[current_node]:
-            new_distance = distances[current_node] + weight
+            new_distance = current_distance + weight
             if new_distance < distances[neighbor]:
                 distances[neighbor] = new_distance
+                # edge를 바탕으로 업데이트한 노드가 다음 가까운 노드 중 하나일 수 있음. 따라서 전체 노드에서 선택하는 대신, 방금 업데이트한 노드만 heap에 삽입
                 heapq.heappush(priority_queue, (new_distance, neighbor))
 
     return distances
